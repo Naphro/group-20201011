@@ -176,6 +176,7 @@ header {
 
     div:last-child {
       font-size: 0.75rem;
+      line-height: 1.5;
     }
 
     nav {
@@ -186,15 +187,11 @@ header {
   .top {
     display: inline-block;
     text-align: center;
-    margin: 0 auto 1.75rem;
+    margin: 3.25rem auto 3.25rem;
 
-    .material-icons {
-      font-size: 4rem;
+    img {
+      width: 2rem;
     }
-  }
-
-  .top {
-    background-color: darkcyan;
   }
 }
 
