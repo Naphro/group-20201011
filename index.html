@@ -28,7 +28,18 @@
     <section class="main">
       <div class="container">
         <div class="banner">
-          <img src="assets/images/img_banner_sp_1.jpg" alt="" />
+          <div class="banner-item">
+            <div class="banner-item__image"></div>
+          </div>
+          <div class="banner-item">
+            <div class="banner-item__image"></div>
+          </div>
+          <div class="banner-item">
+            <div class="banner-item__image"></div>
+          </div>
+          <div class="banner-item">
+            <div class="banner-item__image"></div>
+          </div>
         </div>
         <div class="char-blocks">
           <div class="char-blocks__line">
@@ -167,5 +178,18 @@
         Copyright©Junzo Kuroda Atelier. All Rights Reserved.
       </p>
     </footer>
+    <script>
+      window.onscroll = function () {
+        const menu = document.querySelector('.menu');
+        if (
+          document.querySelector('.logo').getBoundingClientRect().y >
+          document.querySelector('.banner').getBoundingClientRect().y
+        ) {
+          menu.style = 'opacity: 0;';
+        } else {
+          menu.style = '';
+        }
+      };
+    </script>
   </body>
 </html>
