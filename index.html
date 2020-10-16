@@ -25,7 +25,7 @@
       </h1>
       <img src="assets/images/img_menu.png" alt="" class="menu" />
     </header>
-    <section class="main">
+    <section class="main" id="main">
       <div class="container">
         <div class="banner">
           <div class="banner-item">
@@ -169,7 +169,7 @@
           </a>
         </nav>
       </div>
-      <a href="#" class="top">
+      <a href="#main" class="top">
         <img src="assets/images/img_top.png" alt="" />
       </a>
     </section>
@@ -179,6 +179,10 @@
       </p>
     </footer>
     <script>
+      window.onload = function () {
+        adjustImageWidth();
+      };
+
       window.onscroll = function () {
         const menu = document.querySelector('.menu');
         if (
@@ -190,6 +194,17 @@
           menu.style = '';
         }
       };
+
+      window.addEventListener('resize', adjustImageWidth);
+
+      function adjustImageWidth() {
+        const width = document.querySelector('.banner').getBoundingClientRect()
+          .width;
+        const images = document.getElementsByClassName('banner-item__image');
+        for (let i = 0; i < images.length; i++) {
+          images[i].style.width = `${width}px`;
+        }
+      }
     </script>
   </body>
 </html>
