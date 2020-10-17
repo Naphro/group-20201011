@@ -181,6 +181,7 @@
     <script>
       window.onload = function () {
         adjustImageWidth();
+        setupSlidersPosition();
       };
 
       window.onscroll = function () {
@@ -193,6 +194,8 @@
         } else {
           menu.style = '';
         }
+
+        slideUp();
       };
 
       window.addEventListener('resize', adjustImageWidth);
@@ -203,6 +206,29 @@
         const images = document.getElementsByClassName('banner-item__image');
         for (let i = 0; i < images.length; i++) {
           images[i].style.width = `${width}px`;
+        }
+      }
+
+      function setupSlidersPosition() {
+        const sliders = document.getElementsByClassName('slider');
+        for (let i = 0; i < sliders.length; i++) {
+          sliders[i].style.transform = 'translateY(50px)';
+          sliders[i].style.opacity = 0;
+        }
+      }
+
+      function slideUp() {
+        const sliders = document.getElementsByClassName('slider');
+        for (let i = 0; i < sliders.length; i++) {
+          const y = sliders[i].getBoundingClientRect().top;
+          console.log(window.pageYOffset, y, window.innerHeight);
+          if (y + 100 < window.innerHeight) {
+            sliders[i].style.transform = 'translateY(0)';
+            sliders[i].style.opacity = 1;
+          } else {
+            sliders[i].style.transform = 'translateY(50px)';
+            sliders[i].style.opacity = 0;
+          }
         }
       }
     </script>
