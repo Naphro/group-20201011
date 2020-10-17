@@ -65,12 +65,13 @@
             <img src="assets/images/img_word_i.png" alt="" />
             <img src="assets/images/img_word_e.png" alt="" />
             <img src="assets/images/img_word_r.png" alt="" />
+            <img src="assets/images/img_word.png" alt="" class="author" />
           </div>
         </div>
       </div>
     </section>
     <section>
-      <div class="slider">
+      <div class="slider slide-up">
         <div class="slider__title">
           <h2>TSUKUBA KIBA PARK CLINIC</h2>
           <p>つくば木場公園クリニック</p>
@@ -88,7 +89,7 @@
           <img src="assets/images/TKBC_0051_DC71562_S-min-600x400.jpg" alt="" />
         </div>
       </div>
-      <div class="slider">
+      <div class="slider slide-up">
         <div class="slider__title">
           <h2>NANAIRO COMACHI</h2>
           <p>なないろこまち</p>
@@ -113,7 +114,7 @@
           <img src="assets/images/384_DC54229_pre2-1-600x400.jpg" alt="" />
         </div>
       </div>
-      <div class="slider">
+      <div class="slider slide-up">
         <div class="slider__title">
           <h2>NANAIRO CLINIC FOR WOMEN 2</h2>
           <p>なないろレディースクリニック 2</p>
@@ -137,15 +138,17 @@
           <img src="assets/images/384_DC54229_pre2-1-600x400.jpg" alt="" />
         </div>
       </div>
-      <div class="more-work">
+      <div class="more-work slide-up">
         <a href="#" class="btn">MORE WORKS</a>
       </div>
     </section>
     <section class="about">
-      <div class="container">
+      <div class="container slide-up">
         <div class="about__image">
-          <img src="assets/images/img_about.jpg" alt="" />
+          <img src="assets/images/img_about.jpg" alt="" class="offset" />
         </div>
+      </div>
+      <div class="container slide-up">
         <div class="about__title">
           <h2>JUNZO KURODA ATELIER</h2>
           <span>黒田潤三アトリエ</span>
@@ -196,6 +199,7 @@
         }
 
         slideUp();
+        offset();
       };
 
       window.addEventListener('resize', adjustImageWidth);
@@ -210,7 +214,7 @@
       }
 
       function setupSlidersPosition() {
-        const sliders = document.getElementsByClassName('slider');
+        const sliders = document.getElementsByClassName('slide-up');
         for (let i = 0; i < sliders.length; i++) {
           sliders[i].style.transform = 'translateY(50px)';
           sliders[i].style.opacity = 0;
@@ -218,10 +222,11 @@
       }
 
       function slideUp() {
-        const sliders = document.getElementsByClassName('slider');
+        const sliders = document.getElementsByClassName('slide-up');
         for (let i = 0; i < sliders.length; i++) {
           const y = sliders[i].getBoundingClientRect().top;
-          console.log(window.pageYOffset, y, window.innerHeight);
+          sliders[i].style.transition =
+            'opacity 0.8s ease-out, transform 0.6s ease-out';
           if (y + 100 < window.innerHeight) {
             sliders[i].style.transform = 'translateY(0)';
             sliders[i].style.opacity = 1;
@@ -229,6 +234,24 @@
             sliders[i].style.transform = 'translateY(50px)';
             sliders[i].style.opacity = 0;
           }
+        }
+      }
+
+      function offset() {
+        const screenHeight = window.innerHeight;
+        const offset = document.querySelector('.offset');
+        const offsetSize = offset.getBoundingClientRect();
+        const parent = offset.parentElement;
+        const parentSize = parent.getBoundingClientRect();
+        console.log(parentSize.bottom, parentSize.top);
+
+        if (0 <= parentSize.bottom && parentSize.top <= screenHeight) {
+          const delta =
+            ((parentSize.y / screenHeight) * (screenHeight - offset.height)) /
+            2;
+          offset.style.transform = `translateY(-${delta}px) scale(1.2)`;
+        } else {
+          offset.style.transform = '';
         }
       }
     </script>
