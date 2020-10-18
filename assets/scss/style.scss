@@ -274,14 +274,14 @@ header {
   &__images {
     display: flex;
     overflow-x: scroll;
+    overflow-y: hidden;
 
     li {
-      flex-shrink: 0;
-      width: 92.5%;
+      height: 200px;
     }
 
     img {
-      height: 200px;
+      height: 100%;
     }
   }
 }
