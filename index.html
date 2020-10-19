@@ -231,40 +231,41 @@
       </div>
     </section>
     <section class="about">
-      <div class="container slide-up">
-        <div class="about__image">
+      <div class="container">
+        <div class="about__image slide-up">
           <img src="assets/images/img_about.jpg" alt="" class="offset" />
         </div>
-      </div>
-      <div class="container slide-up">
-        <div class="about__title">
-          <h2>JUNZO KURODA ATELIER</h2>
-          <span>黒田潤三アトリエ</span>
+        <div class="slide-up about__text">
+          <div class="about__title">
+            <h2>JUNZO KURODA ATELIER</h2>
+            <span>黒田潤三アトリエ</span>
+          </div>
+          <p class="about__content">
+            建築設計（住宅、共同住宅、
+            診療所、ランドスケープ他）に留まらず、CIデザイン、アートディレクション、家具デザインなどまでトタール・クリエイティブを手がけています。
+          </p>
+          <nav>
+            <a href="#" class="about__link">
+              <div>PROFILE</div>
+              <div>プロフィール</div>
+            </a>
+            <a href="#" class="about__link">
+              <div>FOR CLIENT</div>
+              <div>業務内容やフローなど</div>
+            </a>
+            <a href="#" class="about__link">
+              <div>CONTACT</div>
+              <div>お問い合わせ</div>
+            </a>
+          </nav>
         </div>
-        <p class="about__content">
-          建築設計（住宅、共同住宅、
-          診療所、ランドスケープ他）に留まらず、CIデザイン、アートディレクション、家具デザインなどまでトタール・クリエイティブを手がけています。
-        </p>
-        <nav>
-          <a href="#" class="about__link">
-            <div>PROFILE</div>
-            <div>プロフィール</div>
-          </a>
-          <a href="#" class="about__link">
-            <div>FOR CLIENT</div>
-            <div>業務内容やフローなど</div>
-          </a>
-          <a href="#" class="about__link">
-            <div>CONTACT</div>
-            <div>お問い合わせ</div>
-          </a>
-        </nav>
       </div>
+      
+    </section>
+    <footer>
       <a href="#main" class="top" onclick="goToTop(event)">
         <img src="assets/images/img_top.png" alt="" />
       </a>
-    </section>
-    <footer>
       <p class="copyright">
         Copyright©Junzo Kuroda Atelier. All Rights Reserved.
       </p>
@@ -328,16 +329,16 @@
 
       function offset() {
         const screenHeight = window.innerHeight;
+        const screenWidth = window.innerWidth
         const offset = document.querySelector('.offset');
         const offsetSize = offset.getBoundingClientRect();
         const parent = offset.parentElement;
         const parentSize = parent.getBoundingClientRect();
-
         if (0 <= parentSize.bottom && parentSize.top <= screenHeight) {
           const delta =
-            ((parentSize.y / screenHeight) * (screenHeight - offset.height)) /
+            -1 * (((parentSize.y - 0.08 * screenWidth) / screenHeight) * (screenHeight - offset.height)) /
             2;
-          offset.style.transform = `translateY(-${delta}px) scale(1.2)`;
+          offset.style.transform = `translateY(${delta}px) scale(1.2)`;
         } else {
           offset.style.transform = '';
         }
