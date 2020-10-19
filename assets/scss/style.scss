@@ -281,17 +281,38 @@ header {
   }
 
   &__images {
-    display: flex;
+    // display: flex;
+
     overflow-x: scroll;
     overflow-y: hidden;
 
+    ul {
+      display: inline-block;
+      white-space: nowrap;
+      animation: auto-scroll 40s linear 0s infinite both;
+    }
+
     li {
+      display: inline-block;
       height: 200px;
+
+      + li {
+        margin-left: -4px;
+      }
     }
 
     img {
       height: 100%;
     }
+  }
+}
+
+@keyframes auto-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
