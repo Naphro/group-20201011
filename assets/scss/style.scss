@@ -290,15 +290,16 @@ header {
       display: inline-block;
       white-space: nowrap;
       animation: auto-scroll 40s linear 0s infinite both;
+      font-size: 0;
     }
 
     li {
       display: inline-block;
       height: 200px;
 
-      + li {
-        margin-left: -4px;
-      }
+      // + li {
+      //   margin-left: -4px;
+      // }
     }
 
     img {
